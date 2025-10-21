@@ -1,10 +1,20 @@
 
-local null_ls = require("null-ls")
+-- Configuração do plugin null-ls para formatação e linting
 
--- Configurar formatadores e linters
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.diagnostics.eslint_d,
-  },
-})
+return {
+  "jose-elias-alvarez/null-ls.nvim",
+  config = function()
+    local null_ls = require("null-ls")
+
+    null_ls.setup({
+      sources = {
+        -- Formatação com prettier
+        null_ls.builtins.formatting.prettier,
+
+        -- Linting com eslint_d
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.code_actions.eslint_d,
+      },
+    })
+  end,
+}

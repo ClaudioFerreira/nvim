@@ -1,10 +1,20 @@
 
-local lspconfig = require("lspconfig")
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
+-- Configuração dos servidores LSP usando a nova API do Neovim
 
--- Capabilities para autocompletion
-local capabilities = cmp_nvim_lsp.default_capabilities()
+return {
+  "neovim/nvim-lspconfig",
+  config = function()
+    local lspconfig = require("lspconfig")
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- Configurar servidores LSP
-lspconfig.tsserver.setup({ capabilities = capabilities })
-lspconfig.eslint.setup({ capabilities = capabilities })
+    -- Configurar TypeScript com ts_ls (novo nome)
+    lspconfig.tsserver.setup({
+      capabilities = capabilities,
+    })
+
+    -- Configurar ESLint
+    lspconfig.eslint.setup({
+      capabilities = capabilities,
+    })
+  end,
+}

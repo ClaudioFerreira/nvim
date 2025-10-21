@@ -40,7 +40,10 @@ git clone https://github.com/ClaudioFerreira/nvim ~/.config/nvim
 npm install -g prettier eslint_d typescript typescript-language-server
 ```
 
-3. Abra o Neovim e sincronize os plugins:
+3.  Instalação do LazyGit
+    curl https://raw.githubusercontent.com/jesseduffield/lazygit/master/scripts/install_update_linux.sh | bash
+
+4.  Abra o Neovim e sincronize os plugins:
 
 ```vim
 :Lazy sync

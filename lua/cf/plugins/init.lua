@@ -15,4 +15,6 @@ return {
   "lewis6991/gitsigns.nvim",
   "kdheepak/lazygit.nvim",
   "akinsho/toggleterm.nvim",
+  "neovim/nvim-lspconfig",
+  "christoomey/vim-tmux-navigator",
 }
