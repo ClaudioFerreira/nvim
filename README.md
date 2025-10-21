@@ -37,7 +37,7 @@ git clone https://github.com/ClaudioFerreira/nvim ~/.config/nvim
 2. Instale os binários necessários:
 
 ```bash
-npm install -g prettier eslint_d typescript typescript-language-server
+npm install -g prettier eslint_d typescript typescript-language-server vscode-langservers-extracted
 ```
 
 3.  Instalação do LazyGit
