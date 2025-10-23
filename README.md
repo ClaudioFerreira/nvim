@@ -19,6 +19,8 @@ Configuração personalizada do Neovim para desenvolvimento web com foco em Angu
 │       │   ├── init.lua
 │       │   ├── which-key.lua
 │       │   ├── formatting.lua
+│       │   ├── toggleterm.lua
+│       │   ├── lazygit.lua
 │       │   ├── lsp
 │       │   │   ├── lspconfig.lua
 │       │   │   └── mason.lua
@@ -40,10 +42,13 @@ git clone https://github.com/ClaudioFerreira/nvim ~/.config/nvim
 npm install -g prettier eslint_d typescript typescript-language-server vscode-langservers-extracted
 ```
 
-3.  Instalação do LazyGit
-    curl https://raw.githubusercontent.com/jesseduffield/lazygit/master/scripts/install_update_linux.sh | bash
+3. Instale o LazyGit:
 
-4.  Abra o Neovim e sincronize os plugins:
+```bash
+curl https://raw.githubusercontent.com/jesseduffield/lazygit/master/scripts/install_update_linux.sh | bash
+```
+
+4. Abra o Neovim e sincronize os plugins:
 
 ```vim
 :Lazy sync
@@ -62,14 +67,22 @@ npm install -g prettier eslint_d typescript typescript-language-server vscode-la
 - `nvim-tree.lua`: Navegação de arquivos
 - `telescope.nvim`: Busca inteligente
 - `gitsigns.nvim`: Integração com Git
+- `lazygit.nvim`: Interface de Git via LazyGit
 
 ## ⌨️ Atalhos Úteis
 
 - `<leader>t` → Controle de abas
 - `<leader>w` → Controle de janelas
+- `<leader>s` → Divisão de tela (splits)
+  - `<leader>sv` → Split vertical
+  - `<leader>sh` → Split horizontal
+  - `<leader>se` → Equalizar tamanhos
+  - `<leader>sx` → Fechar split atual
+- `<C-h/j/k/l>` → Navegação entre splits
 - `<leader>r` → Rodar NestJS (`npm run dev`)
 - `<leader>ng` → Rodar Angular (`ng serve`)
 - `<leader>tt` → Abrir terminal integrado
+- `<leader>g l` → Abrir LazyGit
 
 ## 🧠 Observações
 
@@ -82,14 +95,6 @@ npm install -g prettier eslint_d typescript typescript-language-server vscode-la
 ## 🖥️ Terminal Integrado
 
 Este setup inclui o plugin `toggleterm.nvim`, que permite abrir um terminal dentro do Neovim sem sair do editor.
-
-### 🔧 Instalação
-
-O plugin já está incluído em `plugins/init.lua`:
-
-```lua
-"akinsho/toggleterm.nvim"
-```
 
 ### ⚙️ Configuração
 
@@ -115,4 +120,31 @@ require("toggleterm").setup({
 
 ---
 
-Feito com ❤️ por Claudio Ferreira
+## 🔧 Integração com Git via LazyGit
+
+O plugin `lazygit.nvim` permite abrir o LazyGit diretamente no Neovim.
+
+### ⚙️ Instalação do binário LazyGit
+
+#### Ubuntu:
+
+```bash
+sudo add-apt-repository ppa:lazygit-team/release
+sudo apt update
+sudo apt install lazygit
+```
+
+#### macOS:
+
+```bash
+brew install lazygit
+```
+
+### ⌨️ Atalhos
+
+- `<leader>g l` → Abre o LazyGit
+- `:LazyGit` → Comando direto no Neovim
+
+---
+
+Feito por Claudio Ferreira
