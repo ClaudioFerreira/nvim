@@ -4,7 +4,7 @@ return {
     require("toggleterm").setup({
       size = 20,
       open_mapping = [[<C-\>]],
-      direction = "horizontal",
+      direction = "float",
     })
 
     local wk = require("which-key")

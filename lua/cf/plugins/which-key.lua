@@ -22,9 +22,15 @@ return {
         se = { "<C-w>=", "Equal size" },
         sx = { "<cmd>close<CR>", "Close split" },
       },
-      ["<leader>r"] = { ":!npm run dev<CR>", "Run NestJS" },
       ["<leader>ng"] = { ":!ng serve<CR>", "Run Angular" },
       ["<leader>tt"] = { "<cmd>ToggleTerm<CR>", "Open terminal" },
+      ["<leader>s"] = {
+        name = "+splits",
+        v = { "<C-w>v", "Split vertical" },
+        h = { "<C-w>s", "Split horizontal" },
+        e = { "<C-w>=", "Equal size" },
+        x = { "<cmd>close<CR>", "Close split" },
+      },
     })
   end,
 }
