@@ -17,4 +17,5 @@ return {
   "akinsho/toggleterm.nvim",
   "neovim/nvim-lspconfig",
   "christoomey/vim-tmux-navigator",
+  "onsails/lspkind-nvim",
 }
