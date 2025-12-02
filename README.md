@@ -1,24 +1,10 @@
-# Minha Configuração Neovim — Guia Completo para Iniciantes
+# 🚀 Minha Configuração Neovim — Guia Completo para Iniciantes
 
-Este README foi criado para ser um guia simples, bonito e útil para quem está começando no Neovim usando uma configuração modular com **Lazy.nvim**, **LSP**, **telescope**, **treesitter**, **lualine**, **gitsigns** e atalhos essenciais.
-
----
-
-## 🚀 Introdução
-
-Este documento explica:
-
-* Estrutura da sua configuração
-* Atalhos principais (clássicos e personalizados)
-* Como navegar, copiar e colar
-* Como usar o LSP e os plugins
-* Dicas para iniciantes
+Este guia foi criado para quem deseja usar uma configuração moderna e modular do **Neovim**, com recursos avançados como **Lazy.nvim**, **LSP**, **Telescope**, **Treesitter**, **ToggleTerm**, **Bufferline**, **Gitsigns** e atalhos organizados.
 
 ---
 
-## 📁 Estrutura da Configuração
-
-Sua configuração segue o padrão modular usando o **Lazy**.
+## 📦 Estrutura da Configuração
 
 ```
 ~/.config/nvim/
@@ -30,12 +16,46 @@ Sua configuração segue o padrão modular usando o **Lazy**.
 │   │   └── lazy.lua
 │   └── plugins/
 │       ├── lsp.lua
-│       ├── treesitter.lua
 │       ├── telescope.lua
+│       ├── toggleterm.lua
+│       ├── bufferline.lua
+│       ├── whichkey.lua
 │       ├── gitsigns.lua
-│       ├── lualine.lua
 │       └── outros...
 ```
+
+---
+
+## 🔧 Instalação
+
+### macOS
+
+```bash
+brew install neovim ripgrep fd lazygit
+```
+
+### Ubuntu
+
+```bash
+sudo apt update
+sudo apt install neovim ripgrep fd-find lazygit
+# Ajuste fd
+ln -s $(which fdfind) ~/.local/bin/fd
+```
+
+### Nerd Fonts
+
+Baixe e instale uma [Nerd Font](https://www.nerdfonts.com/font-downloads) e configure no seu terminal.
+
+---
+
+## ✅ Dependências
+
+- **Neovim >= 0.11**
+- **ripgrep** (para busca com Telescope)
+- **fd** (para busca rápida de arquivos)
+- **LazyGit** (integração com Git)
+- **Nerd Fonts** (ícones)
 
 ---
 
@@ -43,109 +63,113 @@ Sua configuração segue o padrão modular usando o **Lazy**.
 
 ### 🔹 Movimentação
 
-* `h` → Esquerda
-* `j` → Baixo
-* `k` → Cima
-* `l` → Direita
-* `w` → Avança para próxima palavra
-* `b` → Volta para palavra anterior
-* `gg` → Início do arquivo
-* `G` → Fim do arquivo
+- `h/j/k/l` → Esquerda/Baixo/Cima/Direita
+- `w` → Próxima palavra
+- `b` → Palavra anterior
+- `gg` → Início do arquivo
+- `G` → Fim do arquivo
 
 ### 🔹 Edição
 
-* `i` → Inserir antes do cursor
-* `a` → Inserir depois do cursor
-* `o` → Nova linha abaixo
-* `dd` → Apagar linha
-* `yy` → Copiar linha
-* `p` → Colar abaixo
-* `u` → Desfazer
-* `<C-r>` → Refazer
+- `i` → Inserir antes do cursor
+- `a` → Inserir depois do cursor
+- `o` → Nova linha abaixo
+- `dd` → Apagar linha
+- `yy` → Copiar linha
+- `p` → Colar abaixo
+- `u` → Desfazer
+- `<C-r>` → Refazer
 
 ### 🔹 Seleção
 
-* `v` → Visual
-* `V` → Visual linha
-* `<C-v>` → Visual bloco
+- `v` → Visual
+- `V` → Visual linha
+- `<C-v>` → Visual bloco
 
 ---
 
 ## 🧭 Navegação entre janelas e arquivos
 
-### Janelas (splits)
+### Splits
 
-* `<C-h>` → Janela esquerda
-* `<C-l>` → Janela direita
-* `<C-j>` → Janela abaixo
-* `<C-k>` → Janela acima
+- `<C-h>` → Janela esquerda
+- `<C-l>` → Janela direita
+- `<C-j>` → Janela abaixo
+- `<C-k>` → Janela acima
 
 ### Buffers
 
-* `:bd` → Fechar buffer
-* `<Tab>` → Próximo buffer
-* `<S-Tab>` → Buffer anterior
+- `<leader>bn` → Próxima aba
+- `<leader>bp` → Aba anterior
+- `<leader>bc` → Fechar aba
 
 ---
 
-## 🔍 Telescope — Busca Inteligente
+## 🔍 Busca (Telescope)
 
-* `<leader>ff` → Buscar arquivos
-* `<leader>fg` → Buscar texto (grep)
-* `<leader>fb` → Buffers abertos
-* `<leader>fh` → Ajuda
+- `<leader>ff` → Buscar arquivos
+- `<leader>fg` → Buscar texto (grep)
+- `<leader>fb` → Buffers abertos
+- `<leader>fh` → Ajuda
+
+---
+
+## 🖥️ Terminal (ToggleTerm)
+
+- `<leader>tt` → Alternar terminal
+- `<leader>tf` → Terminal flutuante
+- `<leader>th` → Terminal abaixo
+- `<leader>tv` → Terminal lateral
+- `<leader>tT` → Terminal em tab
 
 ---
 
 ## 🌳 Treesitter
 
-Fornece highlight moderno, melhor entendimento da sintaxe.
-
-Nada a fazer: é automático.
+Highlight moderno e parsing avançado. Funciona automaticamente.
 
 ---
 
 ## 🧠 LSP — Autocomplete e IntelliSense
 
-* `gd` → Ir para definição
-* `gr` → Referências
-* `K` → Hover
-* `<leader>rn` → Renomear
-* `<leader>ca` → Code Actions
-* `<leader>f` → Format
+- `gd` → Ir para definição
+- `gD` → Declaração
+- `gi` → Implementação
+- `K` → Hover
+- `<leader>rn` → Renomear
+- `<leader>ca` → Code Actions
 
 ---
 
-## 🌈 Interface (lualine, gitsigns)
+## 🔗 Git
 
-* `gitsigns` mostra alterações no gutter
-* `lualine` deixa a statusbar mais agradável
+- `<leader>gg` → Abrir LazyGit
+- `gitsigns` mostra alterações no gutter
 
 ---
 
 ## 📦 Lazy.nvim
 
-### Abrir painel do Lazy
-
-```
-:Lazy
-```
-
-### Atualizar plugins
-
-```
-:Lazy update
-```
+- Abrir painel: `:Lazy`
+- Atualizar plugins: `:Lazy update`
 
 ---
 
-## 📚 Dicas para Iniciantes
+## 💡 Dicas para Angular/NestJS
 
-* Evite usar o mouse → Neovim é mais rápido sem ele
-* Treine os movimentos básicos (hjkl)
-* Use o `telescope` sempre que puder
-* Não decore tudo de uma vez, pratique aos poucos
-* Não tenha medo de abrir o `:help`
+- Use **ToggleTerm** para rodar comandos:
+  - `ng serve` → iniciar Angular
+  - `npm run start` → iniciar NestJS
+- Abra terminal flutuante com `<leader>tf` para manter código visível.
+
+---
+
+## 🏆 Boas Práticas
+
+- Abra Neovim dentro da pasta do projeto (`cd meu-projeto && nvim`).
+- Use `:checkhealth` para verificar status.
+- Atualize Neovim para evitar avisos.
+- Pratique movimentos básicos (hjkl) e atalhos aos poucos.
 
 ---
 

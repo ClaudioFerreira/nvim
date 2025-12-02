@@ -1,43 +1,31 @@
+
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "L3MON4D3/LuaSnip",
   },
   config = function()
-    -- Inicializa Mason
     require("mason").setup()
-
-    -- LSP servers recomendados
     require("mason-lspconfig").setup({
-      ensure_installed = {
-        "lua_ls",
-        "ts_ls",
-        "html",
-        "cssls",
-      },
-      automatic_installation = true,
+      ensure_installed = { "lua_ls", "ts_ls", "html", "cssls" },
     })
 
-    local lspconfig = vim.lsp
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    -- Configuração de cada LSP
     vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
       settings = {
-        Lua = {
-          diagnostics = { globals = { "vim" } },
-        },
+        Lua = { diagnostics = { globals = { "vim" } } },
       },
     })
+    vim.lsp.config("ts_ls", { capabilities = capabilities })
+    vim.lsp.config("html", { capabilities = capabilities })
+    vim.lsp.config("cssls", { capabilities = capabilities })
 
-    vim.lsp.config("ts_ls", {})   -- Novo nome do antigo tsserver
-    vim.lsp.config("html", {})
-    vim.lsp.config("cssls", {})
-
-    -- Habilita todos
-    vim.lsp.enable("lua_ls")
-    vim.lsp.enable("ts_ls")
-    vim.lsp.enable("html")
-    vim.lsp.enable("cssls")
+    vim.lsp.enable({ "lua_ls", "ts_ls", "html", "cssls" })
   end,
 }
