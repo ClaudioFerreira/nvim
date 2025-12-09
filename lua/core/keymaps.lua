@@ -23,3 +23,6 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Lazygit
 map("n", "<leader>lg", ":LazyGit<CR>", opts)
+
+-- use jk to exit insert mode
+map("i", "jk", "<ESC>", opts)
