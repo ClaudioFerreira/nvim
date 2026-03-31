@@ -3,8 +3,40 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
-      highlight = { enable = true },
-      indent = { enable = true },
+      ensure_installed = {
+        "typescript",
+        "javascript",
+        "html",
+        "css",
+        "json",
+        "lua",
+        "vim",
+        "kotlin",
+        "java",
+        "groovy",
+        "bash",
+        "yaml",
+        "markdown",
+        "tsx",
+      },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { "markdown" },
+      },
+      indent = {
+        enable = true,
+        disable = { "yaml" },
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = "<C-s>",
+          node_decremental = "<C-backspace>",
+        },
+      },
     })
-  end
+  end,
 }
+
